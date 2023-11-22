@@ -7,4 +7,4 @@ copy the link
 ```
 https://raw.githubusercontent.com/lswlc33/Onemanager_theme_new_onedrive/master/new_onedrive.html
 ```
-and add it to `customTheme` 
+and add it to `平台变量` - `customTheme` field
