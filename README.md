@@ -1,5 +1,5 @@
 # Onemanager_theme_new_onedrive
-一个基于 `Onedrive-dev` 修改而来的新主题
+一个基于 `Onedrive-dev` 修改而来的 [Onemanager](https://github.com/qkqpttgf/OneManager-php) 新主题
 
 示例站点: [雪中明月的网盘](https://pan.xn--fiqz59cpva341l.top/)
 
