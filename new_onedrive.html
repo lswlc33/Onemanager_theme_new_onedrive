@@ -293,6 +293,44 @@
         .more-disk div li a{text-decoration: none; color:rgba(0,0,0,.3);}
         .more-disk div li a:hover{color:rgba(0,0,0,.87);}
         .more-disk div li a[now]{color:rgba(0,0,0,1);}
+
+        #download{
+            display: flex;
+            flex-direction: column;
+            padding: 10px 20px 10px 20px;
+        }
+
+        #download_bu{
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #download_bu button{
+            width: auto;
+            font-size: 15px;
+            margin-left: 20px;
+            border-radius: 8px;
+            border: 2px solid #0078d4;
+            padding: 6px 20px 6px 20px;
+            transition: 0.5s;
+        }
+
+        #download_1{background: white;color: #0078d4;}
+        #download_2{background: #0078d4; color: white;}
+        #download_1:hover{background: rgb(233, 233, 233);}
+        #download_2:hover{background: #006cbe;}
+
+        textarea#url{
+            padding: 10px;
+            resize: none;
+            border: 1px solid #c8c6c4;
+            border-bottom: 2px solid #3b3a39;
+            border-radius: 8px;
+            outline: none;
+            overflow: hidden;
+            transition: 0.5s;
+            font-family: "Microsoft Yahei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+        }textarea#url:hover{border-bottom: 2px solid #0078d4;}
     </style>
 </head>
 <body>
@@ -387,58 +425,6 @@
                             <button id="download_2" onclick="window.location.href = '<!--FileEncodeUrl-->'">点击下载</button>
                         </div>
                 </div>
-                <style>
-#download{
-    display: flex;
-    flex-direction: column;
-    padding: 10px 20px 10px 20px;
-}
-
-#download_bu{
-    display: flex;
-    justify-content: flex-end;
-
-}
-
-#download_bu button{
-    width: auto;
-    font-size: 15px;
-    margin-left: 20px;
-    border-radius: 8px;
-    border: 2px solid #0078d4;
-    padding: 6px 20px 6px 20px;
-    transition: 0.5s;
-}
-
-#download_1{
-    background: white;
-    color: #0078d4;
-}
-#download_2{
-    background: #0078d4;
-    color: white;
-}
-#download_1:hover{
-    background: rgb(233, 233, 233);
-}
-#download_2:hover{
-    background: #006cbe;
-}
-
-textarea#url{
-    padding: 10px;
-    resize: none;
-    border: 1px solid #c8c6c4;
-    border-bottom: 2px solid #3b3a39;
-    border-radius: 8px;
-    outline: none;
-    overflow: hidden;
-    transition: 0.5s;
-}
-textarea#url:hover{
-    border-bottom: 2px solid #0078d4;
-}
-                </style>
             </div>
 <!--IsFileEnd-->
 <!--IsFolderStart-->
