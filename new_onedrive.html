@@ -421,7 +421,7 @@
                         
                         <div id="download_tip">拥有链接的人员都可编辑.</div>
                         <div id="download_bu">
-                            <button id="download_1" onclick="navigator.clipboard.writeText('<!--FileDownUrl-->')">复制链接</button>
+                            <button id="download_1" onclick="navigator.clipboard.writeText(document.querySelector('#url').innerHTML)">复制链接</button>
                             <button id="download_2" onclick="window.location.href = '<!--FileEncodeUrl-->'">点击下载</button>
                         </div>
                 </div>
