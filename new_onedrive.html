@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><!--Title--></title>
+    <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
 
     <!--MdRequireStart-->
     <link rel="stylesheet" href="https://unpkg.com/github-markdown-css@3.0.1/github-markdown.css">
     <script type="text/javascript" src="?jsFile=marked.js"></script>
     <!--MdRequireEnd-->
     <!--IsFileStart--><!--IspdfFileStart--><script src="https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js"></script><!--IspdfFileEnd--><!--IsFileEnd-->
-    <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
     <!--https://p.sfx.ms/images/favicon.ico-->
     <!--GuestUploadStart--><script type="text/javascript" src="?jsFile=spark-md5.min.js"></script><!--GuestUploadEnd-->
-    <!--AliyundriveUploadJsStart--><script src="https://unpkg.com/bignumber.js@9.0.2/bignumber.js"></script>
-<script src="?jsFile=sha1.min.js"></script><!--AliyundriveUploadJsEnd-->
+    <!--AliyundriveUploadJsStart--><script src="https://unpkg.com/bignumber.js@9.0.2/bignumber.js"></script><script src="?jsFile=sha1.min.js"></script><!--AliyundriveUploadJsEnd-->
 
     <style>
         /* 通用样式 */
@@ -231,6 +230,8 @@
             padding: 0 20px;
             overflow: hidden;
             transition: 0.5s;
+            margin-top: 2.5px;
+            margin-bottom: 2.5px;
         }
         main .main-item-list .main-items-displayName,
         main .main-item-list .main-items-fileName { 
@@ -344,13 +345,15 @@
 
         #upload_div select,
         #upload_div input,
-        div{
+        #upload_div div{
             font-size: 15px;
             transition: 0.5s;
             border-radius: 8px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
+
+
         #upload_div select{
             border: 2px solid #c7c7c7;
             padding: 10px 10px 6px 20px;
@@ -407,6 +410,8 @@
             color: #000;
         }
    </style>
+
+<!-- 附加样式与脚本 -->
    <!--customCss-->
    <!--customScript-->
 </head>
@@ -622,6 +627,8 @@
         </div>
 	</div>
 <!--LoginEnd-->
+
+<!-- 下面是js脚本 -->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
 <!--ListStart-->
@@ -646,6 +653,8 @@
         e.innerHTML += paths[paths.length - 1];
         e.innerHTML = e.innerHTML.replace(/\s\/\s$/, '')
     });*/
+
+// 文件预览相关
 <!--IsFileStart-->
     var $url = document.getElementById('url');
     if ($url) {
@@ -833,6 +842,7 @@
         }
 <!--LoginEnd-->
 
+// 功能性文件
 <!--HeadmdStart-->
     var $head = document.getElementById('head');
     if ($head) {
@@ -848,6 +858,7 @@
 <!--ReadmemdEnd-->
     </script>
 
+<!-- 文件上传相关 -->
     <script>
         <!--UploadJsStart-->
     function size_format(num) {
@@ -1019,9 +1030,6 @@
                         td2.innerHTML='md5: '+filemd5;
                         td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"><!--constStr@CopyUrl--></button></div>';
 <!--GuestEnd-->
-<!--AdminStart-->
-                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" style="display:none"><!--constStr@CopyUrl--></button></div>';
-<!--AdminEnd-->
                     }
                 /*if (i<files.length-1) {
                     i++;
@@ -1122,10 +1130,6 @@
                                 label.parentNode.style.background = 'rgba(0,80,0,25%)';
                                 
                                 // uploadbuttonshow();
-<!--AdminStart-->
-                                response.name=file.webkitRelativePath||response.name;
-                                addelement(response);
-<!--AdminEnd-->
                             } else {
                                 if (!response['nextExpectedRanges']) {
                                     label.innerHTML='<font color="red">'+xhr.responseText+'</font><br>';
@@ -1304,7 +1308,7 @@
                                         if (html.exist==true) td2.innerHTML=html.name+' 文件名已有';
                                         else if (html.rapid_upload==true) td2.innerHTML=html.name+' 秒传';
                                         else td2.innerHTML='<font color="red">'+xhr1.responseText+'</font><br>';
-                                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"  ><!--constStr@CopyUrl--></button></div>';
                                     } else {
                                         td2.innerHTML='<font color="red">'+xhr1.responseText+'</font><br>';
                                     }
@@ -1379,11 +1383,6 @@
                         console.log(xhr1.responseText+','+xhr1.status);
                         if (xhr1.status==200) {
                             localStorage.removeItem(filesha1);
-<!--AdminStart-->
-                            var html=JSON.parse(xhr1.responseText);
-                            //response.name=file.webkitRelativePath||response.name;
-                            addelement(html);
-<!--AdminEnd-->
                             /*if (totalsize>10*1024*1024) {
                                 var xhr3 = new XMLHttpRequest();
                                 xhr3.open("GET", '?action=del_upload_cache&filelastModified='+file.lastModified+'&filesize='+file.size+'&filename='+filename);
@@ -1400,7 +1399,7 @@
                             } else {
                                 MiddleStr += '<!--constStr@ThisTime--><!--constStr@AverageSpeed-->:'+size_format((totalsize-newstartsize)*1000/(EndTime.getTime()-StartTime.getTime()))+'/s<br>';
                             }
-                            document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                            document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"><!--constStr@CopyUrl--></button></div>';
                             label.innerHTML=StartStr+MiddleStr;
                             label.parentNode.style.background = 'rgba(0,80,0,25%)';
                         } else {
@@ -1452,11 +1451,6 @@
                                     console.log(xhr1.responseText+','+xhr1.status);
                                     if (xhr1.status==200) {
                                         localStorage.removeItem(filesha1);
-<!--AdminStart-->
-                                        var html=JSON.parse(xhr1.responseText);
-                                        //response.name=file.webkitRelativePath||response.name;
-                                        addelement(html);
-<!--AdminEnd-->
                                         /*if (totalsize>10*1024*1024) {
                                             var xhr3 = new XMLHttpRequest();
                                             xhr3.open("GET", '?action=del_upload_cache&filelastModified='+file.lastModified+'&filesize='+file.size+'&filename='+filename);
@@ -1473,7 +1467,7 @@
                                         } else {
                                             MiddleStr += '<!--constStr@ThisTime--><!--constStr@AverageSpeed-->:'+size_format((totalsize-newstartsize)*1000/(EndTime.getTime()-StartTime.getTime()))+'/s<br>';
                                         }
-                                        document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                                        document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"  ><!--constStr@CopyUrl--></button></div>';
                                         label.innerHTML=StartStr+MiddleStr;
                                         label.parentNode.style.background = 'rgba(0,80,0,25%)';
                                     } else {
