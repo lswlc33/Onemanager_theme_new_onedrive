@@ -37,10 +37,6 @@
         ul { 
             list-style: none;
         }
-        input[type="radio"] {
-            margin: 0;
-            outline: none;
-        }
 
         /* 兼容样式 */
         body {
@@ -165,9 +161,6 @@
             transform: scale(0.980);
             border-radius: 10px;
             border-bottom: 0px solid #F4F4F4;
-        }
-        main .main-items:hover .main-items-radio { 
-            display: inline-block!important; 
         }
         main .main-item-list .inner-container {
             display: flex;
@@ -352,18 +345,6 @@
         <!--ListStart-->
         <div class="scroll">
             <div class="container">
-<!--AdminStart-->
-        <div class="control">
-            <div class="container">
-                <div class="control-item">
-                    <button class="control-items">
-                        <i class="iconfont control-items-icon">&#xe755;</i>
-                        <span class="control-items-content"><!--constStr@Create--></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-<!--AdminEnd-->
                 <div class="main-title">
                     <h1 class="main-title-path">
                         <a href="<!--base_path-->"><!--constStr@Home--></a>
@@ -426,11 +407,6 @@
                 <div class="main-item-list">
                     <div class="main-items main-item-title">
                         <div class="inner-container">
-<!--AdminStart-->
-                            <div class="main-items-radio-box">
-                                <!-- <input class="main-items-radio main-items-check-all" type="radio" name="" id=""> -->
-                            </div>
-<!--AdminEnd-->
                             <div class="main-items-icon">
                                 <i class="iconfont">&#xe746;</i>
                             </div>
@@ -441,11 +417,6 @@
                     </div>
 <!--FolderListStart-->
                     <div class="main-items">
-<!--AdminStart-->
-                        <div class="main-items-radio-box">
-                            <input class="main-items-radio" type="radio" checked name="file" id="">
-                        </div>
-<!--AdminEnd-->
                         <div class="main-items-icon">
                             <img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/20/folder.svg" alt="folder icon">
                         </div>
@@ -458,11 +429,6 @@
 <!--FolderListEnd-->
 <!--FileListStart-->
                     <div class="main-items">
-<!--AdminStart-->
-                        <div class="main-items-radio-box">
-                            <input class="main-items-radio" type="radio" checked name="file" id="">
-                        </div>
-<!--AdminEnd-->
                         <div class="main-items-icon">
                             <i class="iconfont">&#xe746;</i>
                         </div>
@@ -511,60 +477,6 @@
 <!--LoginEnd-->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
-<!--AdminStart-->
-        window.onload = function () 
-        {
-            // 获取所有radios元素
-            var allRadios = document.getElementsByClassName("main-items-radio");
-            RegisterRadioClick(allRadios);
-        }
-
-        // 为所有radio注册点击事件
-        function RegisterRadioClick(radios) 
-        {
-            if (radios != null) 
-            {
-                var radio;
-                for (var i = 0; i < radios.length ; i++) 
-                {
-                    // 获取单个radio元素
-                    radio = radios[i];
-                    // 为每个radio元素设置当前状态为：False
-                    //radio.setAttribute("currStatus", "false");
-                    // 页面刚加载后，取消因缓存的checked属性
-                    radio.checked = false;
-                    // 为页面中每个radio元素注册点击事件
-                    radio.onclick = function()
-                    {
-                        // 获取当前点击对象的自定义属性
-                        var currStatus = this.getAttribute("currStatus");
-                        AllRadioCurrentStatus2False(radios);
-                        if (currStatus === "true") 
-                        {
-                            AllRadioCurrentStatus2False(radios);
-                            this.setAttribute("currStatus", false);
-                            this.checked = false;
-                        }
-                        else 
-                        {
-                            this.setAttribute("currStatus", true);
-                            this.checked = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        // 把页面里所有radio元素自定义属性变成为false
-        // 不然会出现需要点击两次才会被选中
-        function AllRadioCurrentStatus2False(radios)
-        {
-            for (var i = 0; i < radios.length; i++)
-            {
-                radios[i].setAttribute("currStatus", false);
-            }
-        }
-<!--AdminEnd-->
 <!--ListStart-->
     /*var root = '<!--base_disk_path-->';
     function path_format(path) {
@@ -664,12 +576,6 @@
 <!--IsvideoFileEnd-->
 <!--IsFileEnd-->
 <!--ListEnd-->
-<!--AdminStart-->
-        function logout() {
-            document.cookie = "admin=; path=/";
-            location.href = location.href;
-        }
-<!--AdminEnd-->
 <!--LoginStart-->
         function login() {
             document.getElementById('mask').style.display='';
