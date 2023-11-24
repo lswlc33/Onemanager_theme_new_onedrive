@@ -116,7 +116,11 @@
             <!--BackgroundMStart-->background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundMUrl-->");}<!--BackgroundMEnd-->
         }
 
+
         main .scroll {
+            position: absolute;
+        }
+        .scroll {
             overflow-y: auto;
             position: absolute;
             top: 0;
@@ -130,7 +134,7 @@
             display: flex;
             flex-direction: column;
             height: auto;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.8);
             margin: 20px;
             line-height: 32px;
             font-size: 14px;
@@ -138,7 +142,7 @@
             border-radius: 12px;
             border: #e0e0e0 solid 1px;
             padding: 12px 0;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
         }
         main .main-title h1 {
             margin: 0;
