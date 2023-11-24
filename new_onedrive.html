@@ -117,6 +117,7 @@
             height: 100%;
             background: #f0f0f4;
         }
+
         main .scroll {
             overflow-y: auto;
             position: absolute;
@@ -125,7 +126,14 @@
             bottom: 0;
             left: 0;
             padding: 48px 0 100px 0;
+<!--BackgroundMStart-->
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-attachment:fixed;
+            background-image:url("<!--BackgroundMUrl-->");
+<!--BackgroundMEnd-->
         }
+        
         main .main-item-list {
             display: flex;
             flex-direction: column;
