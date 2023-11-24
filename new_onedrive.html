@@ -63,7 +63,6 @@
         .pull-left { 
             float: left; 
             padding: 0px 20px;
-            background: rgba(255,255,255,0.2);
         }
         .pull-right { 
             float: right; 
@@ -90,23 +89,16 @@
         /* header */
         header {
             width: 100%;
-            /*height: 88px;*/
             line-height: 48px;
-            font-size: 16px;
-            background-color: #0078D4;
-        }
-        header nav {
-            height: 48px;
-            color: #FFF;
-            box-sizing: border-box;
+            background-color: rgba(255,255,255,0.5);
+            position: fixed;
+            z-index: 1;
+            backdrop-filter: blur(10px);
         }
         header nav a {
-            color: #FFF;
+            color: rgb(36, 36, 36);
             font-weight: 600;
             transition: 0.5s;
-        }
-        header nav a:hover {
-            color: #FFF;
         }
         header nav .lang .language { outline: none; }
         header .control {
@@ -132,7 +124,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            height: calc(100dvh - 48px);
+            padding: 48px 0 100px 0;
         }
         main .main-item-list {
             display: flex;
