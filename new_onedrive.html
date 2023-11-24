@@ -384,6 +384,24 @@
         #upload_btns{
             display: flex;
             justify-content: space-evenly;
+            text-align: center;
+        }
+
+        #need—pw-div input{
+            border: 1px solid #0078d4;
+            font-size: 16px;
+            background-color: #0078d4;
+            outline: none;
+            border-radius: 8px;
+            color: white;
+            padding: 10px 20px 10px 20px;
+        }
+        input#password1{
+            border: 2px solid #0078d4;
+            background-color: white;
+            padding: 10px 10px 10px 10px;
+            margin-bottom: 40px;
+            color: #000;
         }
    </style>
    <!--customCss-->
@@ -428,6 +446,22 @@
                 </div>
             </div>
 <!--HeadmdEnd-->
+
+<!--EncryptedStart-->
+<div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+    加密文件夹
+</div>
+<div class="main-item-list" id="need—pw-div" style="padding: 50px 30px; font-size: larger; font-weight: bold;">
+    <center>
+        <form action="" method="post">
+        <input id="password1" name="password1" type="password" placeholder="请输入文件夹密码">
+        <br>
+        <input type="submit" value="确认">
+        </form>
+    </center>
+</div>
+
+<!--EncryptedEnd-->
 
 <!--GuestUploadStart-->
     <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
