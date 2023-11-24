@@ -335,6 +335,13 @@
         .scroll::-webkit-scrollbar-thumb {background: #a8a8a8;}
         .scroll::-webkit-scrollbar-button {display: none;}
 
+        #upload_div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-table {margin-top: 20px;}
+
         #upload_div select,
         #upload_div input,
         div{
@@ -971,10 +978,10 @@
                         td2.innerHTML=html['error']['code']+': '+html['error']['message'];
 <!--GuestStart-->
                         td2.innerHTML='md5: '+filemd5;
-                        td1.innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"><!--constStr@CopyUrl--></button></div>';
+                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"><!--constStr@CopyUrl--></button></div>';
 <!--GuestEnd-->
 <!--AdminStart-->
-                        td1.innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" style="display:none"><!--constStr@CopyUrl--></button></div>';
+                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+(file.webkitRelativePath||file.name)+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" style="display:none"><!--constStr@CopyUrl--></button></div>';
 <!--AdminEnd-->
                     }
                 /*if (i<files.length-1) {
@@ -1071,7 +1078,7 @@
                                 }
                                 delete uploading[filename];
                                 while (filename.indexOf('%2F')>0) filename = filename.replace('%2F', '/');
-                                document.getElementById('upfile_td1_'+tdnum).innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                                document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--></div>';
                                 label.innerHTML=StartStr+MiddleStr;
                                 label.parentNode.style.background = 'rgba(0,80,0,25%)';
                                 
@@ -1258,7 +1265,7 @@
                                         if (html.exist==true) td2.innerHTML=html.name+' 文件名已有';
                                         else if (html.rapid_upload==true) td2.innerHTML=html.name+' 秒传';
                                         else td2.innerHTML='<font color="red">'+xhr1.responseText+'</font><br>';
-                                        td1.innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                                        td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
                                     } else {
                                         td2.innerHTML='<font color="red">'+xhr1.responseText+'</font><br>';
                                     }
@@ -1354,7 +1361,7 @@
                             } else {
                                 MiddleStr += '<!--constStr@ThisTime--><!--constStr@AverageSpeed-->:'+size_format((totalsize-newstartsize)*1000/(EndTime.getTime()-StartTime.getTime()))+'/s<br>';
                             }
-                            document.getElementById('upfile_td1_'+tdnum).innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                            document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
                             label.innerHTML=StartStr+MiddleStr;
                             label.parentNode.style.background = 'rgba(0,80,0,25%)';
                         } else {
@@ -1427,7 +1434,7 @@
                                         } else {
                                             MiddleStr += '<!--constStr@ThisTime--><!--constStr@AverageSpeed-->:'+size_format((totalsize-newstartsize)*1000/(EndTime.getTime()-StartTime.getTime()))+'/s<br>';
                                         }
-                                        document.getElementById('upfile_td1_'+tdnum).innerHTML='<div style="color:green"><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
+                                        document.getElementById('upfile_td1_'+tdnum).innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+filename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+document.getElementById('upfile_td1_'+tdnum).innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+filename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'" <!--AdminStart--> style="display:none"<!--AdminEnd--> ><!--constStr@CopyUrl--></button></div>';
                                         label.innerHTML=StartStr+MiddleStr;
                                         label.parentNode.style.background = 'rgba(0,80,0,25%)';
                                     } else {
