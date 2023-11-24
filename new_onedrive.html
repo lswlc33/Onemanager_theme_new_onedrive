@@ -374,6 +374,7 @@
                 <img src="<!--FileDownUrl-->" alt="<!--FileName-->" onload="if (this.offsetWidth>document.getElementById('url').offsetWidth) this.style.width='100%';" />
             </div>
 <!--IsimgFileEnd-->
+
 <!--IsvideoFileStart-->
             <div class="main-item-list" id="videoFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 视频预览
@@ -382,6 +383,15 @@
                 <div id="video-a0"></div>
             </div>
 <!--IsvideoFileEnd-->
+
+<!--IstxtFileStart-->
+            <div class="main-item-list" id="txtFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                文本预览
+            </div>
+            <div class="main-item-list" id="txtFil-div" style="padding: 20px;overflow: hidden;">
+                <textarea id="txt-a" name="editfile" readonly><!--TxtContent--></textarea>
+            </div>
+<!--IstxtFileEnd-->
 <!--IsFileEnd-->
 
 <!--IsFileStart-->
@@ -571,6 +581,12 @@
     }
     addVideos(['<!--FileDownUrl-->']);
 <!--IsvideoFileEnd-->
+<!--IstxtFileStart-->
+    var $textarea=document.getElementById('txt-a');
+    if ($textarea) {
+        $textarea.style.height = $textarea.scrollHeight + 'px';
+    }
+<!--IstxtFileEnd-->
 <!--IsFileEnd-->
 <!--ListEnd-->
 <!--LoginStart-->
