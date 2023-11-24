@@ -34,7 +34,6 @@
             transition: 0.5s;
         }
         a:hover {
-            font-weight: 600;
             color: rgb(36, 36, 36);
         }
         ul { 
@@ -441,6 +440,8 @@
 <!--DiskPathArrayEnd-->
                     </h1>
                 </div>
+            </div>
+
 <!--HeadmdStart-->
             <div class="main-item-list" id="head-div">
                 <div class="list-container" style="padding: 20px;">
@@ -455,42 +456,43 @@
             </div>
 <!--HeadmdEnd-->
 
+<!-- 加密文件夹 -->
 <!--EncryptedStart-->
-<div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
-    加密文件夹
-</div>
-<div class="main-item-list" id="need—pw-div" style="padding: 50px 30px; font-size: larger; font-weight: bold;">
-    <center>
-        <form action="" method="post">
-        <input id="password1" name="password1" type="password" placeholder="请输入文件夹密码">
-        <br>
-        <input type="submit" value="确认">
-        </form>
-    </center>
-</div>
-
+            <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                加密文件夹
+            </div>
+            <div class="main-item-list" id="need—pw-div" style="padding: 50px 30px; font-size: larger; font-weight: bold;">
+                <center>
+                    <form action="" method="post">
+                    <input id="password1" name="password1" type="password" placeholder="请输入文件夹密码">
+                    <br>
+                    <input type="submit" value="确认">
+                    </form>
+                </center>
+            </div>
 <!--EncryptedEnd-->
 
+<!-- 游客上传 -->
 <!--GuestUploadStart-->
-    <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
-        文件上传
-    </div>
-
-    <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
-        <div id="upload_div">
-            <div id="upload_btns" align="center">
-                <select onchange="document.getElementById('upload_file').webkitdirectory=this.value;">
-                    <option value="">文件</option>
-                    <option value="1">文件夹</option>
-                </select>
-                <div id="upload_file_bu">上传文件<input id="upload_file" type="file" name="upload_filename" multiple="multiple"></div>
-                <input id="upload_submit" onclick="preup();" value="上传" type="button">
+            <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                文件上传
             </div>
-        </div>
-    </div>
+
+            <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                <div id="upload_div">
+                    <div id="upload_btns" align="center">
+                        <select onchange="document.getElementById('upload_file').webkitdirectory=this.value;">
+                            <option value="">文件</option>
+                            <option value="1">文件夹</option>
+                        </select>
+                        <div id="upload_file_bu">上传文件<input id="upload_file" type="file" name="upload_filename" multiple="multiple"></div>
+                        <input id="upload_submit" onclick="preup();" value="上传" type="button">
+                    </div>
+                </div>
+            </div>
 <!--GuestUploadEnd-->
 
-
+<!-- 文件预览 -->
 <!--IsFileStart-->
 <!--IsimgFileStart-->
             <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
@@ -511,13 +513,12 @@
 <!--IsvideoFileEnd-->
 
 <!--IspdfFileStart-->
-<div class="main-item-list" id="pdfFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
-    文档预览
-</div>
-<div class="main-item-list" id="pdfFil-div" style="padding: 20px;overflow: hidden;">
-    <div id="pdf-d">少女折寿中 ... ...</div>
-</div>
-
+            <div class="main-item-list" id="pdfFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                文档预览
+            </div>
+            <div class="main-item-list" id="pdfFil-div" style="padding: 20px;overflow: hidden;">
+                <div id="pdf-d">少女折寿中 ... ...</div>
+            </div>
 <!--IspdfFileEnd-->
 
 <!--IsmusicFileStart-->
@@ -539,6 +540,7 @@
 <!--IstxtFileEnd-->
 <!--IsFileEnd-->
 
+<!-- 文件下载 -->
 <!--IsFileStart-->
             <div class="main-item-list" id="videoFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 文件下载
@@ -555,60 +557,68 @@
                 </div>
             </div>
 <!--IsFileEnd-->
+
+<!-- 文件列表 -->
 <!--IsFolderStart-->
-                <div class="main-item-list">
-                    <div class="main-items main-item-title">
-                        <div class="inner-container">
-                            <div class="main-items-icon">
-                                <i class="iconfont">&#xe746;</i>
-                            </div>
-                            <div class="main-items-displayName"><!--constStr@File--></div>
-                            <div class="main-items-dateModified"><!--constStr@EditTime--></div>
-                            <div class="main-items-size"><!--constStr@Size--></div>
-                        </div>
-                    </div>
-<!--FolderListStart-->
-                    <div class="main-items">
-                        <div class="main-items-icon">
-                            <img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/20/folder.svg" alt="folder icon">
-                        </div>
-                        <div class="main-items-fileName">
-                            <a href="<!--FileEncodeReplaceUrl-->/"><!--FileEncodeReplaceName--></a>
-                        </div>
-                        <div class="main-items-dateTime" ><!--lastModifiedDateTime--></div>
-                        <div class="main-items-fileSize" ><!--size--></div>
-                    </div>
-<!--FolderListEnd-->
-<!--FileListStart-->
-                    <div class="main-items">
+            <div class="main-item-list">
+                <div class="main-items main-item-title">
+                    <div class="inner-container">
                         <div class="main-items-icon">
                             <i class="iconfont">&#xe746;</i>
                         </div>
-                        <div class="main-items-fileName">
-                            <a href="<!--FileEncodeReplaceUrl-->?preview" target="_blank"><!--FileEncodeReplaceName--></a>
-                        </div>
-                        <div class="main-items-dateTime" ><!--lastModifiedDateTime--></div>
-                        <div class="main-items-fileSize" ><!--size--></div>
+                        <div class="main-items-displayName"><!--constStr@File--></div>
+                        <div class="main-items-dateModified"><!--constStr@EditTime--></div>
+                        <div class="main-items-size"><!--constStr@Size--></div>
                     </div>
-<!--FileListEnd-->
                 </div>
+<!--FolderListStart-->
+                <div class="main-items">
+                    <div class="main-items-icon">
+                        <img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/20/folder.svg" alt="folder icon">
+                    </div>
+                    <div class="main-items-fileName">
+                        <a href="<!--FileEncodeReplaceUrl-->/"><!--FileEncodeReplaceName--></a>
+                    </div>
+                    <div class="main-items-dateTime" ><!--lastModifiedDateTime--></div>
+                    <div class="main-items-fileSize" ><!--size--></div>
+                </div>
+<!--FolderListEnd-->
+<!--FileListStart-->
+                <div class="main-items">
+                    <div class="main-items-icon">
+                        <i class="iconfont">&#xe746;</i>
+                    </div>
+                    <div class="main-items-fileName">
+                        <a href="<!--FileEncodeReplaceUrl-->?preview" target="_blank"><!--FileEncodeReplaceName--></a>
+                    </div>
+                    <div class="main-items-dateTime" ><!--lastModifiedDateTime--></div>
+                    <div class="main-items-fileSize" ><!--size--></div>
+                </div>
+<!--FileListEnd-->
+            </div>
 <!--IsFolderEnd-->
 <!--ReadmemdStart-->
-                <div class="main-item-list" id="readme-div">
-                        <div class="list-container" style="padding: 20px;>
-                            <div class="list-header-container">
-                                <div class="readme">
-                                    <div class="markdown-body" id="readme">
-                                        <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
-                                    </div>
-                                </div>
+            <div class="main-item-list" id="readme-div">
+                <div class="list-header-container">
+                    <div class="readme">
+                        <div class="markdown-body" id="readme">
+                            <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
                         </div>
                     </div>
                 </div>
+            </div>
 <!--ReadmemdEnd-->
+            <div style="text-align: center; margin-top: 100px;">
+                <div id="foot_info">
+                </div>
+                <script>
+                    let year = new Date().getFullYear()
+                    document.querySelector("#foot_info").innerHTML='Copyright © ' + year + ' | Powered by <a href="https://github.com/qkqpttgf/OneManager-php/">Onemanager</a> |   <a href="https://github.com/lswlc33/Onemanager_theme_new_onedrive/">Theme</a> by <a href="https://github.com/lswlc33/">雪中明月</a>'
+                </script>
             </div>
         </div>
 <!--ListEnd-->
+
     </main>
     <footer>
         <!-- OneDrive程序 -->
