@@ -153,15 +153,8 @@
         main .main-item-list {
             display: flex;
             flex-direction: column;
-            height: auto;
-            background: rgba(40,41,42, 0.8);
             margin: 20px;
-            line-height: 32px;
-            font-size: 14px;
-            box-sizing: border-box;
-            border-radius: 24px;
             padding: 12px 0;
-            backdrop-filter: blur(20px);
         }
         main .main-title h1 {
             margin: 32px 32px 10px 32px;
@@ -178,6 +171,10 @@
             border-radius: 100px;
             padding: 10px 20px;
         }
+        div.main-title a:hover {
+            background: rgb(146,185,248);
+            color: rgb(22, 22, 22);
+        }
         div.main-title a:last-of-type {
             font-weight: 600;
             background: rgb(146,185,248);
@@ -186,9 +183,8 @@
 
 
         main .main-items:hover { 
-            background-color: #F4F4F4;
+            background-color: #2d2f31;
             transform: scale(0.980);
-            border-radius: 10px;
         }
         main .main-item-list .inner-container {
             display: flex;
@@ -209,7 +205,7 @@
             display: none;
         }
         main .main-item-list .main-item-title { 
-            border-bottom: 1px solid #EAEAEA;
+            border: 1px solid rgb(146,185,248);
         }
         main .main-item-list .main-items-radio-box {
             width: 48px;
@@ -252,12 +248,11 @@
         main .main-items {
             display: flex;
             justify-content: flex-start;
-            box-sizing: border-box;
-            padding: 0 20px;
-            overflow: hidden;
             transition: 0.5s;
-            margin-top: 2.5px;
-            margin-bottom: 2.5px;
+            background: #28292a;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 24px;
         }
         main .main-item-list .main-items-displayName,
         main .main-item-list .main-items-fileName { 
