@@ -235,6 +235,7 @@
         main .main-item-list .main-items-displayName,
         main .main-item-list .main-items-fileName { 
             width: 520px;
+            flex: 1;
         }
         main .main-item-list .main-items-dateModified,
         main .main-item-list .main-items-dateTime { 
@@ -243,6 +244,7 @@
         main .main-item-list .main-items-size,
         main .main-item-list .main-items-fileSize { 
             width: 180px;
+            text-align: right;
         }
         main .main-item-list .main-items-radio-box,
         main .main-item-list .main-items-icon,
@@ -406,6 +408,11 @@
             padding: 10px 10px 10px 10px;
             margin-bottom: 40px;
             color: #000;
+        }
+        @media screen and (max-width: 600px) {
+
+            .main-items-dateTime{display: none;}
+            .main-items-dateModified{display: none;}
         }
    </style>
 
