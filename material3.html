@@ -242,12 +242,6 @@
             height: 32px!important;
             line-height: 9px!important;
         }
-        main .main-item-title .main-items-icon:hover,
-        main .main-item-list .main-items-displayName:hover,
-        main .main-item-list .main-items-dateModified:hover,
-        main .main-item-list .main-items-size:hover { 
-            background-color: #EAEAEA; 
-        }
         main .main-item-list .main-items-icon .iconfont {
             font-size: 20px;
         }
@@ -328,7 +322,6 @@
         #download{
             display: flex;
             flex-direction: column;
-            padding: 10px 20px 10px 20px;
         }
 
         #download_bu{
@@ -341,27 +334,27 @@
             width: auto;
             font-size: 15px;
             margin-left: 20px;
-            border-radius: 8px;
-            border: 2px solid #0078d4;
+            border-radius: 24px;
+            border: 2px solid #92b9f8;
             padding: 6px 20px 6px 20px;
             transition: 0.5s;
         }
 
         #download_bu button:active{transform: scale(0.9);}
-        #download_1{background: white;color: #0078d4;}
-        #download_2{background: #0078d4; color: white;}
-        #download_1:hover{background: rgb(233, 233, 233);}
-        #download_2:hover{background: #006cbe;}
+        #download_1{background: transparent;color: #92b9f8;}
+        #download_2{background: #92b9f8; color: rgb(0, 0, 0);}
+        #download_1:hover{background: rgba(233, 233, 233, 0.1);}
+        #download_2:hover{background: #7090c4;border: 2px solid #7090c4;}
 
         textarea{
             color: rgb(227, 227, 227);
-            padding: 10px;
+            padding: 20px;
             resize: none;
             border-radius: 24px;
             outline: none;
             overflow: hidden;
             border: none;
-            background-color: rgb(37,41,50);
+            background-color: rgba(60,61,64);
             transition: 0.5s;
             font-family: "Microsoft Yahei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
         }
@@ -384,25 +377,26 @@
         #upload_div div{
             font-size: 15px;
             transition: 0.5s;
-            border-radius: 8px;
+            border-radius: 24px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
 
 
         #upload_div select{
-            border: 2px solid #c7c7c7;
+            border: 2px solid rgb(146,185,248);
             padding: 10px 10px 6px 20px;
+            background: transparent;
             outline: none;
+            color: #7090c4;
         }
-        #upload_div select:hover{border: 2px solid #0078d4;}
         #upload_submit{
-            border: 2px solid #0078d4;
+            border: 2px solid rgb(146,185,248);
             padding: 6px 40px 6px 40px;
-            background-color: #0078d4;
-            color: #ffffff;
+            background-color: rgb(146,185,248);
+            color: #000000;
         }
-        #upload_submit:hover{background: #006cbe;}
+        #upload_submit:hover{background: #7090c4; border: 2px solid #7090c4;}
         #upload_submit:active,#upload_file_bu:active{transform: scale(0.9);}
         #upload_file{
             opacity: 0;
@@ -414,14 +408,16 @@
             
         }
         #upload_file_bu{
-            border: 2px solid #0078d4;
-            background-color: #ffffff;
+            border: 2px solid rgb(146,185,248);
+            background-color: transparent;
             font-weight: 400;
-            color: #0078d4;
+            color: rgb(146,185,248);
             position: relative;
             padding: 6px 20px 6px 20px;
             text-align: center;
         }
+        #upload_div select:hover{background: rgba(233, 233, 233, 0.1);}
+        #upload_file_bu:hover{background: rgba(233, 233, 233, 0.1);}
         #upload_btns{
             display: flex;
             justify-content: space-evenly;
@@ -463,6 +459,9 @@
 
         .markdown-body {color: rgb(227, 227, 227);}
         .markdown-body a {color: #92b9f8;}
+        .markdown-body hr {opacity: 0.4;}
+        .markdown-body h1, .markdown-body h2 {border-bottom: 1px solid rgba(234 236 239,0.4);}
+        .markdown-body blockquote {border-left: .25em solid rgba(223,226,229,0.4);}
 
         @media screen and (max-width: 600px) {
             .main-items-dateTime{display: none;}
@@ -610,7 +609,7 @@
             <div class="main-item-list" id="txtFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 文本预览
             </div>
-            <div class="main-item-new" id="txtFil-div" style="padding: 20px;overflow: hidden;">
+            <div class="main-item-list" id="txtFil-div">
                 <textarea id="txt-a" name="editfile" readonly><!--TxtContent--></textarea>
             </div>
 <!--IstxtFileEnd-->
@@ -621,7 +620,7 @@
             <div class="main-item-list" id="videoFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 文件下载
             </div>
-            <div class="main-item-new">
+            <div class="main-item-list">
                 <div id="download">
                         <textarea id="url" title="url" rows="5" cols="33" readonly><!--FileEncodeUrl--></textarea>
                         <div id="download_bu">
