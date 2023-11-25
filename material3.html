@@ -334,6 +334,7 @@
         #download_bu{
             display: flex;
             justify-content: flex-end;
+            margin-top: 20px;
         }
 
         #download_bu button{
@@ -353,6 +354,7 @@
         #download_2:hover{background: #006cbe;}
 
         textarea{
+            color: rgb(227, 227, 227);
             padding: 10px;
             resize: none;
             border-radius: 24px;
@@ -457,6 +459,8 @@
             width: 70px;
             display: none;
         }
+
+        .markdown-body {color: rgb(227, 227, 227);}
 
         @media screen and (max-width: 600px) {
             .main-items-dateTime{display: none;}
@@ -618,8 +622,6 @@
             <div class="main-item-new">
                 <div id="download">
                         <textarea id="url" title="url" rows="5" cols="33" readonly><!--FileEncodeUrl--></textarea>
-                        
-                        <div id="download_tip">拥有链接的人员都可查看.</div>
                         <div id="download_bu">
                             <button id="download_1" onclick="navigator.clipboard.writeText(document.querySelector('#url').innerHTML)">复制链接</button>
                             <button id="download_2" onclick="window.location.href = '<!--FileEncodeUrl-->'">点击下载</button>
