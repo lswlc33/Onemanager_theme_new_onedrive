@@ -464,13 +464,14 @@
         /* 多盘切换 */
 
         .multidisk_name{
-            font-size: 25px;
+            font-size: 20px;
             background: rgb(146,185,248);
             margin: 5px 0;
             border-radius: 24px;
             padding: 11px 20px 11px 20px;
             transition: 0.5s;
-            transform: translateX(300px)
+            transform: translateX(300px);
+            display: none;
         }
         #plus_div{
             position: fixed;
@@ -482,18 +483,32 @@
             color: #000;
             z-index: 1;
         }
-        #plus_ball{
+        .plus_ball{
             background: rgb(146,185,248);
-            width: 50px;
-            height: 50px;
-            border-radius: 50px;
+            width: 75px;
+            height: 75px;
+            border-radius: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 30px;
             transition: 0.5s;
         }
-        #plus_ball:hover, .multidisk_name:hover{
+        .plus_ball .material-icons{ font-size: 30px;}
+        .multidisk_name:hover{
+            transform: scale(0.9);
+            background: rgb(125, 158, 211);
+        }
+
+        .plus_ball_on{
+            width: 75px;
+            height: 75px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            transition: 0.5s;
             transform: scale(0.9);
             background: rgb(125, 158, 211);
         }
@@ -530,7 +545,7 @@
 <body>
 <!--MultiDiskAreaStart-->
     <div id="plus_div">
-        <div id="plus_ball" onclick="show_hide_tab()">
+        <div id="plus_ball" class="plus_ball" onclick="show_hide_tab()">
             <span class="material-icons">add</span>
         </div>
 <!--MultiDisksStart-->
@@ -786,11 +801,19 @@
     var tab_list = document.querySelectorAll(".multidisk_name");
     function show_hide_tab() {
         var translateXValue = curr_tab ? "300px" : "0px";
+        document.querySelector("#plus_ball").classList = curr_tab ? "plus_ball" : "plus_ball_on";
+        document.querySelector("#plus_ball").innerHTML = curr_tab ? '<span class="material-icons">add</span>' : '<span class="material-icons">remove</span>';
         tab_list.forEach((tab, i) => {
+            tab.style.display = "flex";
             setTimeout(() => {
                 tab.style.transform = "translateX(" + translateXValue + ")";
             }, i * 100);
         });
+        setTimeout(() => {
+            tab_list.forEach((tab, i) => {
+                if (!curr_tab) {tab.style.display = "none";}
+            })
+        }, tab_list.length * 100);
         curr_tab = 1 - curr_tab;
 }
 </script>
