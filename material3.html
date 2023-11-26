@@ -451,15 +451,52 @@
         .markdown-body blockquote {border-left: .25em solid rgba(223,226,229,0.4);}
 
         #log_in_div{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 800px;
-                height: 100%;
-                justify-content: center;
-            }
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        /* 多盘切换 */
+
+        .multidisk_name{
+            font-size: 25px;
+            background: rgb(146,185,248);
+            margin: 5px 0;
+            border-radius: 24px;
+            padding: 11px 20px 11px 20px;
+            transition: 0.5s;
+            transform: translateX(300px)
+        }
+        #plus_div{
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            color: #000;
+            z-index: 1;
+        }
+        #plus_ball{
+            background: rgb(146,185,248);
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            transition: 0.5s;
+        }
+        #plus_ball:hover, .multidisk_name:hover{
+            transform: scale(0.9);
+            background: rgb(125, 158, 211);
+        }
 
         @media screen and (max-width: 600px) {
             .main-items-dateTime{display: none;}
@@ -491,27 +528,18 @@
    <!--customScript-->
 </head>
 <body>
-    <div id="plus_ball">
-        <span class="material-icons">add</span>
+<!--MultiDiskAreaStart-->
+    <div id="plus_div">
+        <div id="plus_ball" onclick="show_hide_tab()">
+            <span class="material-icons">add</span>
+        </div>
+<!--MultiDisksStart-->
+        <div class="multidisk_name" onclick="window.location.href='<!--MultiDisksUrl-->'">
+            <span <!--MultiDisksNow-->><!--MultiDisksName--></a>
+        </div>
+<!--MultiDisksEnd-->
     </div>
-    <style>
-        #plus_ball{
-            position: fixed;
-            background: rgb(146,185,248);
-            width: 50px;
-            height: 50px;
-            bottom: 100px;
-            right: 20px;
-            z-index: 1;
-            color: #000;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
-
-
+<!--MultiDiskAreaEnd-->
     <header>
         <nav class="container">
             <div class="pull_title" onclick="change_page_to(0)" style="color: rgb(146,185,248);">    
@@ -550,24 +578,6 @@
 <!--DiskPathArrayEnd-->
                 </h1>
             </div>
-
-            <div class="main-item-list" id="head-div">
-                <!--MultiDiskAreaStart-->
-                <div class="list-wrapper" id="more-disk-div">
-                    <div class="list-container">
-                        <div class="list-header-container">
-                            <div class="more-disk">
-                <!--MultiDisksStart-->
-                                <a href="<!--MultiDisksUrl-->" <!--MultiDisksNow-->><!--MultiDisksName--></a>
-                <!--MultiDisksEnd-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--MultiDiskAreaEnd-->
-            </div>
-
-
 
 <!--HeadmdStart-->
             <div class="main-item-list" id="head-div">
@@ -770,7 +780,20 @@
     }
 </script>
 
-
+<!-- 多盘切换 -->
+<script>
+    var curr_tab = 0;
+    var tab_list = document.querySelectorAll(".multidisk_name");
+    function show_hide_tab() {
+        var translateXValue = curr_tab ? "300px" : "0px";
+        tab_list.forEach((tab, i) => {
+            setTimeout(() => {
+                tab.style.transform = "translateX(" + translateXValue + ")";
+            }, i * 100);
+        });
+        curr_tab = 1 - curr_tab;
+}
+</script>
 
 <script>
     function sha1loginpass(f) {
