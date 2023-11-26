@@ -16,7 +16,7 @@
     <!--AliyundriveUploadJsStart--><script src="https://unpkg.com/bignumber.js@9.0.2/bignumber.js"></script><script src="?jsFile=sha1.min.js"></script><!--AliyundriveUploadJsEnd-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+    <script type="text/javascript" src="?jsFile=sha1.min.js"></script>
 
     <style>
         /* 通用样式 */
@@ -428,6 +428,7 @@
             outline: none;
             font-size: 20px;
             min-width: 0px;
+            color: rgb(227,227,227);
         }
         #need—pw-div span{
             padding: 10px 20px;
@@ -440,7 +441,7 @@
             right: 0;
             height: 100%;
             width: 70px;
-            display: none;
+            opacity: 0;
         }
 
         .markdown-body {color: rgb(227, 227, 227);}
@@ -490,6 +491,27 @@
    <!--customScript-->
 </head>
 <body>
+    <div id="plus_ball">
+        <span class="material-icons">add</span>
+    </div>
+    <style>
+        #plus_ball{
+            position: fixed;
+            background: rgb(146,185,248);
+            width: 50px;
+            height: 50px;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1;
+            color: #000;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+
     <header>
         <nav class="container">
             <div class="pull_title" onclick="change_page_to(0)" style="color: rgb(146,185,248);">    
@@ -510,9 +532,10 @@
             <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 登录后台
             </div>
-            <form id="need—pw-div" style="margin: 30px; margin-bottom: 200px;" action="<!--IsPreview?-->login=admin" method="post">
+            <form id="need—pw-div" style="margin: 30px; margin-bottom: 200px;" action="<!--IsPreview?-->login=admin" onsubmit="return sha1loginpass(this);" method="post">
                 <input id="password1" name="password1" type="password" placeholder="请输入管理员密码">
                 <input type="submit" value="确认">
+                <input name="timestamp" type="hidden" value="">
                 <span class="material-symbols-outlined">send</span>
             </form>
         </div>
@@ -527,6 +550,24 @@
 <!--DiskPathArrayEnd-->
                 </h1>
             </div>
+
+            <div class="main-item-list" id="head-div">
+                <!--MultiDiskAreaStart-->
+                <div class="list-wrapper" id="more-disk-div">
+                    <div class="list-container">
+                        <div class="list-header-container">
+                            <div class="more-disk">
+                <!--MultiDisksStart-->
+                                <a href="<!--MultiDisksUrl-->" <!--MultiDisksNow-->><!--MultiDisksName--></a>
+                <!--MultiDisksEnd-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--MultiDiskAreaEnd-->
+            </div>
+
+
 
 <!--HeadmdStart-->
             <div class="main-item-list" id="head-div">
@@ -549,7 +590,7 @@
             </div>
 
             <form id="need—pw-div" action="" method="post">
-                <input id="password1" name="password1" type="password" placeholder="请输入文件夹密码">
+                <input id="password2" name="password1" type="password" placeholder="请输入文件夹密码">
                 <input type="submit" value="确认">
                 <span class="material-symbols-outlined">send</span>
             </form>
@@ -729,6 +770,33 @@
     }
 </script>
 
+
+
+<script>
+    function sha1loginpass(f) {
+        if (f.password1.value=="") return false;
+        timestamp = new Date().getTime() + "";
+        timestamp = timestamp.substr(0, timestamp.length-3);
+        f.timestamp.value = timestamp;
+        f.password1.value = sha1(timestamp + "" + f.password1.value);
+        return true;
+    }
+    function loadjs(url) {
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET", url);
+        xhr.onload = function(e) {
+            if (xhr.status==200) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.text = xhr.responseText;
+                document.body.appendChild(script);
+            } else {
+                console.log(xhr.response);
+            }
+        }
+        xhr.send(null);
+    }
+</script>
 <!-- 下面是js脚本 -->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
