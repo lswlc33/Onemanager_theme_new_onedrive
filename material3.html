@@ -115,6 +115,11 @@
             flex-direction: column;
             text-align: center;
             width: 100%;
+            transition: 0.2s;
+        }
+
+        .pull_title:active{
+            transform: scale(0.9);
         }
         .pull_title span {
             font-size: 30px;
@@ -299,25 +304,6 @@
         main .main-item-list .main-items-fileName a:hover {
             text-decoration: underline;
         }
-        .more-disk{
-            vertical-align: middle;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-            display: inline-block;
-            max-width: 100px;
-        }
-        .more-disk div{
-            list-style:none;
-            position:absolute;
-            display:none;background:#ffffff;border-radius:5px;margin:0 0 0 -10px;/*padding:0 7px;*/color:#205D67;z-index:1;
-            box-shadow: 0 0.5em 3em rgba(161,177,204,.4);
-        }
-        .more-disk:hover div{display:block}
-        .more-disk div li{line-height:normal;padding: 3px 10px;}
-        .more-disk div li a{text-decoration: none; color:rgba(0,0,0,.3);}
-        .more-disk div li a:hover{color:rgba(0,0,0,.87);}
-        .more-disk div li a[now]{color:rgba(0,0,0,1);}
 
         #download{
             display: flex;
@@ -463,6 +449,17 @@
         .markdown-body h1, .markdown-body h2 {border-bottom: 1px solid rgba(234 236 239,0.4);}
         .markdown-body blockquote {border-left: .25em solid rgba(223,226,229,0.4);}
 
+        #log_in_div{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 800px;
+                height: 100%;
+                justify-content: center;
+            }
+
         @media screen and (max-width: 600px) {
             .main-items-dateTime{display: none;}
             .main-items-dateModified{display: none;}
@@ -495,11 +492,11 @@
 <body>
     <header>
         <nav class="container">
-            <div class="pull_title" onclick="window.location.href='<!--base_path-->'">    
+            <div class="pull_title" onclick="change_page_to(0)" style="color: rgb(146,185,248);">    
                 <span class="material-icons">home</span>
                 <div><!--Sitename--></div>
             </div>
-            <div class="pull_title" onclick="window.location.href='/?login=admin'">
+            <div class="pull_title" onclick="change_page_to(1)">
                 <span class="material-icons">account_circle</span>
                 <div>登录</div>
             </div>
@@ -508,7 +505,19 @@
     <main>
         <!--ListStart-->
         <div class="scroll">
-        <div class="container">
+        <!-- 后台登录界面 -->
+        <div id="log_in_div"  style="display: none;">
+            <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
+                登录后台
+            </div>
+            <form id="need—pw-div" style="margin: 30px; margin-bottom: 200px;" action="<!--IsPreview?-->login=admin" method="post">
+                <input id="password1" name="password1" type="password" placeholder="请输入管理员密码">
+                <input type="submit" value="确认">
+                <span class="material-symbols-outlined">send</span>
+            </form>
+        </div>
+
+        <div class="container" id="pan_list_div">
             <div class="main-title">
                 <h1 class="main-title-path">
                     <a href="<!--base_path-->"><!--constStr@Home--></a>
@@ -691,49 +700,39 @@
 
     </main>
     <footer>
-        <!-- OneDrive程序 -->
+
     </footer>
     <div id="mask" class="mask" style="display:none;"></div>
-<!--LoginStart-->
-    <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close"><!--constStr@Close--></a>
-	        <center>
-	            <form action="<!--IsPreview?-->login=admin" method="post">
-		        <input id="login_input" name="password1" type="password" placeholder="<!--constStr@InputPassword-->">
-		        <input type="submit" value="<!--constStr@Login-->">
-	            </form>
-            </center>
-        </div>
-	</div>
-<!--LoginEnd-->
+
+<!-- 后台登陆 -->
+<script>
+    var cur_page = 0
+    function change_page_to(page_num) {
+        let log_in_div = document.querySelector("#log_in_div")
+        let pan_list_div = document.querySelector("#pan_list_div")
+        let icon_1 = document.querySelector("nav > div:nth-child(1)")
+        let icon_2 = document.querySelector("nav > div:nth-child(2)")
+        if (page_num == 0){
+            log_in_div.style.display = "none"
+            pan_list_div.style.display = "block"
+            icon_1.style.color = "rgb(146,185,248)"
+            icon_2.style.color = "rgb(227,227,227)"
+            console.log(1)
+        }
+        if (page_num == 1){
+            log_in_div.style.display = "flex"
+            pan_list_div.style.display = "none"
+            icon_2.style.color = "rgb(146,185,248)"
+            icon_1.style.color = "rgb(227,227,227)"
+            console.log(2)
+        }
+    }
+</script>
 
 <!-- 下面是js脚本 -->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
 <!--ListStart-->
-    /*var root = '<!--base_disk_path-->';
-    function path_format(path) {
-        path = '/' + path + '/';
-        while (path.indexOf('//') !== -1) {
-            path = path.replace('//', '/')
-        }
-        return path
-    }
-    document.querySelectorAll('.main-title-path').forEach(function (e) {
-        var path = e.innerText;
-        if (path.substr(path.length-1)=='/') path = path.substr(0, path.length-1);
-        var paths = path.split('/');
-        e.innerHTML = '<a href="' + root + '"><!--constStr@Home--></a> > ';
-        if (paths <= 2) return;
-        for (var i = 1; i < paths.length - 1; i++) {
-            var to = path_format(root + paths.slice(0, i + 1).join('/'));
-            e.innerHTML += '<a href="' + to + '">' + paths[i] + '</a> > '
-        }
-        e.innerHTML += paths[paths.length - 1];
-        e.innerHTML = e.innerHTML.replace(/\s\/\s$/, '')
-    });*/
-
 // 文件预览相关
 <!--IsFileStart-->
     var $url = document.getElementById('url');
@@ -910,17 +909,7 @@
 <!--IstxtFileEnd-->
 <!--IsFileEnd-->
 <!--ListEnd-->
-<!--LoginStart-->
-        function login() {
-            document.getElementById('mask').style.display='';
-                //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
-            document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
-            document.getElementById('login_div').style.display='';
-            document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
-            document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
-            document.getElementById('login_input').focus();
-        }
-<!--LoginEnd-->
+
 
 // 功能性文件
 <!--HeadmdStart-->
