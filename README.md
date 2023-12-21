@@ -35,3 +35,9 @@
 2. 进入Onemaneger后台  
 3. 填入 `平台变量` - `customTheme` 字段  
 4. 点击 `设置` 提交即可
+
+
+## 感谢
+[ArtPlayer](https://github.com/zhw2590582/ArtPlayer)  
+[OneManager-php](https://github.com/qkqpttgf/OneManager-php)  
+等
