@@ -858,8 +858,7 @@
                 </div>
                 <div class="main-item-list">
                     <div id="download">
-                        <textarea id="url" title="url" rows="5" cols="33" readonly><!--FileEncodeUrl--></textarea>
-
+                        <textarea id="url" title="url" rows="5" cols="33" readonly></textarea>
                         <div id="download_tip">拥有链接的人员都可查看.</div>
                         <div id="download_bu">
                             <button id="download_1" onclick="copyLink()">
@@ -1003,19 +1002,99 @@
         })
     </script>
 
-
-
     <!--ListStart-->
 
     <!--IsFileStart-->
     <script>
-        var $url = document.getElementById('url');
-        if ($url) {
-            //$url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
-            let url = location.href;
-            url = url.substr(0, url.length - 8);
-            $url.innerHTML = url.replace(/&amp;/g, '&amp;amp;');
-            $url.style.height = $url.scrollHeight + 'px';
+        document.querySelector('#url').innerText = decodeURI(window.location.href.replace("?preview", ""))
+    </script>
+
+    <!-- 自定义Toast -->
+    <script>
+        function showToast(title, text, sec = 3) {
+            if (!title) {
+                console.error('title is required');
+                return;
+            } else if (!text) {
+                console.error('text is required');
+                return;
+            }
+
+            var oldToast = document.querySelectorAll('.mToast');
+            if (oldToast.length > 0) {
+                oldToast[0].remove();
+            }
+
+            var toast = document.createElement('div');
+            var titleDiv = document.createElement('div');
+            var textDiv = document.createElement('div');
+
+            toast.className = 'mToast div';
+            titleDiv.className = 'mToast title';
+            textDiv.className = 'mToast text';
+
+            toast.style.cssText = `
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                z-index: 9999;
+
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 14px;
+                color: white;
+                backdrop-filter: blur(10px);
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+                width: 250px;
+                margin: 15px;
+                padding: 15px;
+
+                transition: 0.5s;
+                transform: translateX(150%);
+            `;
+            titleDiv.style.cssText = `
+                color: white;
+                padding-bottom: 5px;
+            `;
+            textDiv.style.cssText = `
+                color: rgb(213, 213, 213);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            `;
+
+            titleDiv.textContent = title;
+            textDiv.textContent = text;
+
+            toast.appendChild(titleDiv);
+            toast.appendChild(textDiv);
+            document.body.appendChild(toast);
+
+            setTimeout(function () {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+
+
+            setTimeout(function () {
+                toast.style.transform = 'translateX(150%)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 500);
+            }, sec * 1000);
+        }
+    </script>
+
+    <!-- 复制链接 -->
+    <script>
+        function copyLink() {
+            navigator.clipboard.writeText(document.querySelector('#url').innerHTML).then(
+                function () {
+                    showToast('复制成功！', '链接已经保存到剪贴板')
+                },
+                function () {
+                    showToast('复制失败！', '不要着急！你可以手动复制')
+                },
+            );
         }
     </script>
 
@@ -1568,7 +1647,8 @@
                 });
 
                 reader.onload = function (e) {
-                    td2.innerHTML = '<!--constStr@Calculate--> SHA1: ' + (asize * 100 / file. ).toFixed(2) + '%';
+                    md5_as = (asize * 100 / file.size).toFixed(2)
+                    td2.innerHTML = `<!--constStr@Calculate--> md5: ${md5_as} %`;
                     var binary = this.result;
                     spark.update(binary);
                     asize += chunksize;
@@ -1810,95 +1890,6 @@
         }
     </script>
     <!--AliyundriveUploadJsEnd-->
-
-    <!-- 自定义Toast -->
-    <script>
-        function showToast(title, text, sec = 3) {
-            if (!title) {
-                console.error('title is required');
-                return;
-            } else if (!text) {
-                console.error('text is required');
-                return;
-            }
-
-            var oldToast = document.querySelectorAll('.mToast');
-            if (oldToast.length > 0) {
-                oldToast[0].remove();
-            }
-
-            var toast = document.createElement('div');
-            var titleDiv = document.createElement('div');
-            var textDiv = document.createElement('div');
-
-            toast.className = 'mToast div';
-            titleDiv.className = 'mToast title';
-            textDiv.className = 'mToast text';
-
-            toast.style.cssText = `
-                position: fixed;
-                right: 0;
-                bottom: 0;
-                z-index: 9999;
-
-                background-color: rgba(0, 0, 0, 0.7);
-                border-radius: 14px;
-                color: white;
-                backdrop-filter: blur(10px);
-                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-                width: 250px;
-                margin: 15px;
-                padding: 15px;
-
-                transition: 0.5s;
-                transform: translateX(150%);
-            `;
-            titleDiv.style.cssText = `
-                color: white;
-                padding-bottom: 5px;
-            `;
-            textDiv.style.cssText = `
-                color: rgb(213, 213, 213);
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-                overflow: hidden;
-            `;
-
-            titleDiv.textContent = title;
-            textDiv.textContent = text;
-
-            toast.appendChild(titleDiv);
-            toast.appendChild(textDiv);
-            document.body.appendChild(toast);
-
-            setTimeout(function () {
-                toast.style.transform = 'translateX(0)';
-            }, 100);
-
-
-            setTimeout(function () {
-                toast.style.transform = 'translateX(150%)';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 500);
-            }, sec * 1000);
-        }
-    </script>
-
-    <!-- 复制链接 -->
-    <script>
-        function copyLink() {
-            navigator.clipboard.writeText(document.querySelector('#url').innerHTML).then(
-                function () {
-                    showToast('复制成功！', '链接已经保存到剪贴板')
-                },
-                function () {
-                    showToast('复制失败！', '不要着急！你可以手动复制')
-                },
-            );
-        }
-    </script>
 
 </body>
 
