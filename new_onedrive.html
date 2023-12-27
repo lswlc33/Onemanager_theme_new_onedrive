@@ -160,8 +160,7 @@
             position: relative;
             height: 100%;
             background: #f0f0f4;
-            <!--BackgroundStart-->background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundUrl-->");<!--BackgroundEnd-->
-            <!--BackgroundMStart-->background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundMUrl-->");}<!--BackgroundMEnd-->
+            background-repeat:no-repeat;background-size:cover;background-attachment:fixed;
         }
 
 
@@ -565,6 +564,7 @@
 <!--LoginEnd-->
         </nav>
     </header>
+
     <main>
         <!--ListStart-->
         <div class="scroll">
@@ -605,8 +605,8 @@
             </div>
 <!--HeadmdEnd-->
 
-<!-- 加密文件夹 -->
 <!--EncryptedStart-->
+<!-- 加密文件夹 -->
             <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 加密文件夹
             </div>
@@ -619,10 +619,24 @@
                     </form>
                 </center>
             </div>
+<!-- 密码自动填充 -->
+            <script>
+                function getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) { return pair[1]; }
+                    }
+                    return (false);
+                }
+                enterPw = getQueryVariable('pw')
+                if (enterPw) { document.querySelector('#password1').value = enterPw }
+            </script>
 <!--EncryptedEnd-->
 
-<!-- 游客上传 -->
 <!--GuestUploadStart-->
+<!-- 游客上传 -->
             <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 文件上传
             </div>
@@ -641,8 +655,8 @@
             </div>
 <!--GuestUploadEnd-->
 
-<!-- 文件预览 -->
 <!--IsFileStart-->
+<!-- 文件预览 -->
 <!--IsimgFileStart-->
             <div class="main-item-list" id="imgFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 图片预览
@@ -686,20 +700,11 @@
             <div class="main-item-list" id="txtFil-div" style="padding: 0px;overflow: hidden;">
                 <div id="txt-a" style="height: 400px"></div>
             </div>
-            <script>
-                let value = `<!--TxtContent-->`
-                function editor_init() {
-                    window.monaco.editor.create(document.getElementById("txt-a"), {
-                        value,
-                        readonly: true
-                    })  
-                }
-            </script>
 <!--IstxtFileEnd-->
 <!--IsFileEnd-->
 
-<!-- 文件下载 -->
 <!--IsFileStart-->
+<!-- 文件下载 -->
             <div class="main-item-list" id="videoFil-div" style="padding: 15px 30px; font-size: larger; font-weight: bold;">
                 文件下载
             </div>
@@ -709,7 +714,7 @@
                         
                         <div id="download_tip">拥有链接的人员都可查看.</div>
                         <div id="download_bu">
-                            <button id="download_1" onclick="navigator.clipboard.writeText(document.querySelector('#url').innerHTML)">
+                            <button id="download_1" onclick="copyLink()">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.307 2.10533C10.1562 1.98809 9.95188 1.96694 9.78034 2.05085C9.60879 2.13475 9.50001 2.30904 9.50001 2.5V4.49274C9.45712 4.49456 9.41219 4.49701 9.36537 4.5002C8.96247 4.52766 8.41128 4.61105 7.82119 4.83704C7.11343 5.10809 6.34877 5.58508 5.72601 6.41126C5.10338 7.23727 4.64499 8.38259 4.50206 9.95474C4.48301 10.1644 4.5973 10.3635 4.78793 10.4528C4.97857 10.5421 5.20471 10.5024 5.35356 10.3536C6.54248 9.16464 7.72298 8.57773 8.59562 8.28685C8.9558 8.16679 9.2643 8.09693 9.50001 8.0563V10C9.50001 10.1969 9.61557 10.3755 9.79518 10.4561C9.9748 10.5368 10.185 10.5045 10.3322 10.3737L14.8322 6.37371C14.9432 6.27502 15.0046 6.13207 14.9997 5.98361C14.9949 5.83514 14.9242 5.69653 14.807 5.60533L10.307 2.10533ZM9.94293 5.49679L9.94571 5.49705C10.0865 5.51223 10.2279 5.46706 10.3335 5.37257C10.4394 5.27772 10.5 5.14223 10.5 5V3.52232L13.7186 6.02564L10.5 8.88658V7.5C10.5 7.22386 10.2762 7 10 7L9.99892 7L9.99759 7.00001L9.99425 7.00003L9.98483 7.00014L9.9552 7.00087C9.93074 7.00166 9.89695 7.00316 9.85445 7.00599C9.76945 7.01166 9.64951 7.02268 9.49961 7.04409C9.1999 7.08691 8.77971 7.17139 8.2794 7.33816C7.55493 7.57965 6.66479 7.99299 5.7319 8.69863C5.9264 7.98158 6.2077 7.43355 6.52456 7.01319C7.01593 6.36132 7.61523 5.98675 8.17883 5.7709C8.65371 5.58903 9.10252 5.52044 9.43338 5.49788C9.59809 5.48666 9.73137 5.48699 9.82114 5.48988C9.86596 5.49133 9.89972 5.49341 9.92089 5.49498L9.94293 5.49679ZM4.5 3C3.11929 3 2 4.11929 2 5.5V11.5C2 12.8807 3.11929 14 4.5 14H10.5C11.8807 14 13 12.8807 13 11.5V10.5C13 10.2239 12.7761 10 12.5 10C12.2239 10 12 10.2239 12 10.5V11.5C12 12.3284 11.3284 13 10.5 13H4.5C3.67157 13 3 12.3284 3 11.5V5.5C3 4.67157 3.67157 4 4.5 4H6.5C6.77614 4 7 3.77614 7 3.5C7 3.22386 6.77614 3 6.5 3H4.5Z" fill="currentColor"/>
                                     </svg>
@@ -726,8 +731,8 @@
             </div>
 <!--IsFileEnd-->
 
-<!-- 文件列表 -->
 <!--IsFolderStart-->
+<!-- 文件列表 -->
             <div class="main-item-list">
                 <div class="main-items main-item-title">
                     <div class="inner-container">
@@ -789,7 +794,7 @@
                 </div>
             </div>
 <!--FootomfEnd-->
-
+<!-- 页脚 -->
             <div style="text-align: center; margin-top: 100px;">
                 <div id="foot_info">
                 </div>
@@ -800,65 +805,28 @@
             </div>
         </div>
 <!--ListEnd-->
-
     </main>
-    <div id="mask" class="mask" style="display:none;"></div>
-<!--LoginStart-->
-    <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close"><!--constStr@Close--></a>
-	        <center>
-	            <form action="<!--IsPreview?-->login=admin" method="post">
-		        <input id="login_input" name="password1" type="password" placeholder="<!--constStr@InputPassword-->">
-		        <input type="submit" value="<!--constStr@Login-->">
-	            </form>
-            </center>
-        </div>
-	</div>
-<!--LoginEnd-->
+
 
 <!-- 下面是js脚本 -->
-    <!-- 密码自动填充 -->
-    <script>
-        function getQueryVariable(variable) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                if (pair[0] == variable) { return pair[1]; }
-            }
-            return (false);
-        }
-        enterPw = getQueryVariable('pw')
-        if (enterPw) { document.querySelector('#password1').value = enterPw }
-    </script>
 
-    <script>
+<!--BackgroundStart--> 
+<script>
+    document.querySelector('main').style.backgroundImage = 'url("<!--BackgroundUrl-->")'
+</script>
+<!--BackgroundEnd-->
+
+<!--BackgroundMStart-->
+<script>
+    document.querySelector('main').style.backgroundImage = 'url("<!--BackgroundMUrl-->")'
+</script>
+<!--BackgroundMEnd-->
+
+
 <!--ListStart-->
-    /*var root = '<!--base_disk_path-->';
-    function path_format(path) {
-        path = '/' + path + '/';
-        while (path.indexOf('//') !== -1) {
-            path = path.replace('//', '/')
-        }
-        return path
-    }
-    document.querySelectorAll('.main-title-path').forEach(function (e) {
-        var path = e.innerText;
-        if (path.substr(path.length-1)=='/') path = path.substr(0, path.length-1);
-        var paths = path.split('/');
-        e.innerHTML = '<a href="' + root + '"><!--constStr@Home--></a> > ';
-        if (paths <= 2) return;
-        for (var i = 1; i < paths.length - 1; i++) {
-            var to = path_format(root + paths.slice(0, i + 1).join('/'));
-            e.innerHTML += '<a href="' + to + '">' + paths[i] + '</a> > '
-        }
-        e.innerHTML += paths[paths.length - 1];
-        e.innerHTML = e.innerHTML.replace(/\s\/\s$/, '')
-    });*/
 
-// 文件预览相关
 <!--IsFileStart-->
+<script>
     var $url = document.getElementById('url');
     if ($url) {
         //$url.innerHTML = location.protocol + '//' + location.host + $url.innerHTML;
@@ -867,7 +835,10 @@
         $url.innerHTML = url.replace(/&amp;/g, '&amp;amp;');
         $url.style.height = $url.scrollHeight + 'px';
     }
+</script>
+
 <!--IsvideoFileStart-->
+<script>
     var art = new Artplayer({
         container: '#video-a0',
         url: '<!--FileDownUrl-->',
@@ -882,8 +853,11 @@
         miniProgressBar: true,
     });
     addVideos(['']);
+</script>
 <!--IsvideoFileEnd-->
+
 <!--IspdfFileStart-->
+<script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.worker.min.js';
     var loadingTask = pdfjsLib.getDocument({
         url: "<!--FileDownUrl-->",
@@ -974,42 +948,47 @@
         }
         return num.toFixed(2) + ' GB';
     }
+</script>
 <!--IspdfFileEnd-->
+
 <!--IstxtFileStart-->
+<script>
+    let value = `<!--TxtContent-->`
+    function editor_init() {
+        window.monaco.editor.create(document.getElementById("txt-a"), {
+            value,
+            readonly: true
+        })  
+    }
+</script>
 <!--IstxtFileEnd-->
+
 <!--IsFileEnd-->
 <!--ListEnd-->
-<!--LoginStart-->
-        function login() {
-            document.getElementById('mask').style.display='';
-                //document.getElementById('mask').style.width=document.documentElement.scrollWidth+'px';
-            document.getElementById('mask').style.height=document.documentElement.scrollHeight<window.innerHeight?window.innerHeight:document.documentElement.scrollHeight+'px';
-            document.getElementById('login_div').style.display='';
-            document.getElementById('login_div').style.left=(document.body.clientWidth-document.getElementById('login_div').offsetWidth)/2 +'px';
-            document.getElementById('login_div').style.top=(window.innerHeight-document.getElementById('login_div').offsetHeight)/2+document.body.scrollTop +'px';
-            document.getElementById('login_input').focus();
-        }
-<!--LoginEnd-->
 
-// 功能性文件
+
+
 <!--HeadmdStart-->
-    var $head = document.getElementById('head');
-    if ($head) {
-        //document.getElementById('head-div').parentNode.insertBefore(document.getElementById('head-div'),document.getElementById('list-div'));
-        $head.innerHTML = marked(document.getElementById('head-md').innerText);
-    }
+    <script>
+        var $head = document.getElementById('head');
+        if ($head) {
+            //document.getElementById('head-div').parentNode.insertBefore(document.getElementById('head-div'),document.getElementById('list-div'));
+            $head.innerHTML = marked(document.getElementById('head-md').innerText);
+        }
+    </script>
 <!--HeadmdEnd-->
 <!--ReadmemdStart-->
-    var $readme = document.getElementById('readme');
-    if ($readme) {
-        $readme.innerHTML = marked(document.getElementById('readme-md').innerText);
-    }
-<!--ReadmemdEnd-->
-    </script>
-
-<!-- 文件上传相关 -->
     <script>
-        <!--UploadJsStart-->
+        var $readme = document.getElementById('readme');
+        if ($readme) {
+            $readme.innerHTML = marked(document.getElementById('readme-md').innerText);
+        }
+    </script>
+<!--ReadmemdEnd-->
+
+
+<!--UploadJsStart-->
+<script>
     function size_format(num) {
         if (num>1024) {
             num=num/1024;
@@ -1059,8 +1038,11 @@
         document.getElementById('upload_file').style.display='';*/
     }
     var uploading = new Object();
+</script>
 <!--UploadJsEnd-->
+
 <!--OnedriveUploadJsStart-->
+<script>
     function preup() {
         uploadbuttonhide();
         var files=document.getElementById('upload_file').files;
@@ -1110,7 +1092,6 @@
             var upbigfilename = encodeURIComponent((file.webkitRelativePath||file.name));
             uploading[upbigfilename] = i;
             var filemd5='';
-<!--GuestStart-->
             function getext(str) {
                 strarry=str.split('.');
                 if (strarry.length==1) return '';
@@ -1146,7 +1127,6 @@
                 delete uploading[upbigfilename];
                 upbigfilename = filemd5+ext;
                 uploading[upbigfilename] = i;
-<!--GuestEnd-->
             td2.innerHTML='<!--constStr@GetUploadLink--> ...';
             var xhr1 = new XMLHttpRequest();
             xhr1.open("POST", '?action=upbigfile');
@@ -1175,10 +1155,10 @@
                         // td2.innerHTML='nameAlreadyExists';
                         var html=JSON.parse(xhr1.responseText);
                         td2.innerHTML=html['error']['code']+': '+html['error']['message'];
-<!--GuestStart-->
+
                         td2.innerHTML='md5: '+filemd5;
                         td1.innerHTML='<div><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'?preview" id="upfile_a_'+tdnum+'" target="_blank">'+td1.innerHTML+'</a><br><a href="<!--base_disk_path--><!--Path-->'+upbigfilename+'" id="upfile_a1_'+tdnum+'"></a><!--constStr@UploadComplete--><button onclick="CopyAllDownloadUrl(\'#upfile_a1_'+tdnum+'\');" id="upfile_cpbt_'+tdnum+'"><!--constStr@CopyUrl--></button></div>';
-<!--GuestEnd-->
+
                     }
                 /*if (i<files.length-1) {
                     i++;
@@ -1188,10 +1168,10 @@
                 }
             }
             xhr1.send('upbigfilename='+ upbigfilename +'&filesize='+ file.size +'&filelastModified='+ file.lastModified +'&filemd5='+ filemd5 + '&_admin=' + localStorage.getItem("admin"));
-<!--GuestStart-->
+
             }
         }
-<!--GuestEnd-->
+
         }
         uploadbuttonshow();
     }
@@ -1307,8 +1287,11 @@
             }
         }
     }
+</script>
 <!--OnedriveUploadJsEnd-->
+
 <!--AliyundriveUploadJsStart-->
+<script>
     function preup() {
         uploadbuttonhide();
         var files=document.getElementById('upload_file').files;
@@ -1383,13 +1366,7 @@
             td1=document.getElementById('upfile_td1_'+tdnum);
             td2=document.getElementById('upfile_td2_'+tdnum);
             var chunksize=10*1024*1024; // 分块大小
-            //var chunksize=100*1024; // 测试小块
-            /*if (file.size>100*1024*1024*1024) {
-                td2.innerHTML='<font color="red"><!--constStr@UpFileTooLarge--></font>';
-                uploadbuttonshow();
-                return;
-            }*/
-            
+
             var upbigfilename = encodeURIComponent((file.webkitRelativePath||file.name));
             uploading[upbigfilename] = [i];
             var spark = sha1.create();
@@ -1420,7 +1397,6 @@
                 } else {
                     filesha1 = spark.hex();
                     td2.innerHTML='SHA1: ' + filesha1;
-<!--GuestStart-->
                     function getext(str) {
                         let p = str.lastIndexOf('.');
                         if (p===-1) return '';
@@ -1429,7 +1405,6 @@
                     }
                     var ext = getext(file.webkitRelativePath||file.name);
                     upbigfilename = filesha1 + ext;
-<!--GuestEnd-->
                     //while (upbigfilename.indexOf('%2F')>0) upbigfilename = upbigfilename.replace('%2F', '/');
                     td2.innerHTML='<!--constStr@GetUploadLink--> ...';
                     var html = JSON.parse(localStorage.getItem(filesha1));
@@ -1652,7 +1627,96 @@
             }
         }
     }
+</script>
 <!--AliyundriveUploadJsEnd-->
+
+<!-- 自定义Toast -->
+    <script>
+        function showToast(title, text, sec=3) {
+            if (!title) {
+                console.error('title is required');
+                return;
+            }else if (!text) {
+                console.error('text is required');
+                return;
+            }
+
+            var oldToast =  document.querySelectorAll('.mToast');
+            if (oldToast.length > 0) {
+                oldToast[0].remove();
+            }
+
+            var toast = document.createElement('div');
+            var titleDiv = document.createElement('div');
+            var textDiv = document.createElement('div');
+
+            toast.className = 'mToast div';
+            titleDiv.className = 'mToast title';
+            textDiv.className = 'mToast text';
+
+            toast.style.cssText = `
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                z-index: 9999;
+
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 14px;
+                color: white;
+                backdrop-filter: blur(10px);
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+                width: 250px;
+                margin: 15px;
+                padding: 15px;
+
+                transition: 0.5s;
+                transform: translateX(150%);
+            `;
+            titleDiv.style.cssText = `
+                color: white;
+                padding-bottom: 5px;
+            `;
+            textDiv.style.cssText = `
+                color: rgb(213, 213, 213);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            `;
+
+            titleDiv.textContent = title;
+            textDiv.textContent = text;
+
+            toast.appendChild(titleDiv);
+            toast.appendChild(textDiv);
+            document.body.appendChild(toast);
+
+            setTimeout(function () {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+
+
+            setTimeout(function () {
+                toast.style.transform = 'translateX(150%)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 500);
+            }, sec * 1000);
+        }
+    </script>
+
+<!-- 复制链接 -->
+    <script>
+        function copyLink() {      
+            navigator.clipboard.writeText(document.querySelector('#url').innerHTML).then(
+                function () {
+                    showToast('复制成功！','链接已经保存到剪贴板')
+                },
+                function () {
+                    showToast('复制失败！','不要着急！你可以手动复制')
+                },
+            );
+        }
     </script>
 
 </body>
