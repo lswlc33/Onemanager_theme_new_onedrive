@@ -750,7 +750,7 @@
                 <div class="main-item-list" id="need—pw-div"
                     style="padding: 50px 30px; font-size: larger; font-weight: bold;">
                     <center>
-                        <form action="" method="post">
+                        <form id="encryptedFile" action="" method="post">
                             <input id="password1" name="password1" type="password" placeholder="请输入文件夹密码">
                             <br>
                             <input type="submit" value="确认">
@@ -770,6 +770,8 @@
                     }
                     enterPw = getQueryVariable('pw')
                     if (enterPw) { document.querySelector('#password1').value = enterPw }
+                    autoIn = getQueryVariable('ai')
+                    if (autoIn) { document.getElementById('encryptedFile').submit(); }
                 </script>
                 <!--EncryptedEnd-->
 
