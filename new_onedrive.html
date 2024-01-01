@@ -32,7 +32,6 @@
     <script src="https://npm.onmicrosoft.cn/bignumber.js@9.0.2/bignumber.js"></script>
     <script src="?jsFile=sha1.min.js"></script><!--AliyundriveUploadJsEnd-->
 
-
     <style>
         /* 通用样式 */
         /* 用于消除默认自带样式 */
@@ -348,6 +347,7 @@
             white-space: nowrap;
             box-sizing: border-box;
             overflow: hidden;
+            display: flex;
         }
 
         main .main-item-list .main-items-radio-box,
@@ -356,6 +356,8 @@
         }
 
         main .main-item-list .main-items-fileName a {
+            overflow-x: auto;
+            overflow-y: hidden;
             color: inherit;
         }
 
@@ -488,6 +490,14 @@
         }
 
         .scroll::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .main-items-fileName a::-webkit-scrollbar {
+            height: 0;
+        }
+
+        .main-items-fileName a::-webkit-scrollbar-button {
             display: none;
         }
 
