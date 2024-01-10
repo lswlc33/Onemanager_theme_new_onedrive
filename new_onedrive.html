@@ -605,6 +605,33 @@
                 display: none;
             }
         }
+
+        #nextpageform {
+            display: flex;
+            flex-direction: row;
+            margin: 0 20px;
+            gap: 10px;
+        }
+
+        .pagenum_div {
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            box-sizing: border-box;
+            border-radius: 12px;
+            border: #e0e0e0 solid 1px;
+            backdrop-filter: blur(20px);
+            padding: 10px;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s;
+        }
+
+        .pagenum_div:hover {
+            transform: scale(0.9);
+        }
     </style>
 
     <!-- 附加样式与脚本 -->
@@ -937,6 +964,37 @@
                     </div>
                     <!--FileListEnd-->
                 </div>
+
+                <!--MorePageStart-->
+                <script>
+                    function nextpage(num) {
+                        document.getElementById('pagenum').value = num;
+                        document.getElementById('nextpageform').submit();
+                    }
+                </script>
+                <form action="" method="POST" id="nextpageform">
+                    <input type="hidden" id="pagenum" name="pagenum" value="">
+                    <!--PrePageStart-->
+                    <div class="pagenum_div" onclick="nextpage('<!--PrePageNum-->');">
+                        <a><!--constStr@PrePage--></a>
+                    </div>
+                    <!--PrePageEnd-->
+                    <!--MorePageListStart-->
+                    <div class="pagenum_div" onclick="nextpage('<!--PageNum-->');">
+                        <a><!--PageNum--></a>
+                    </div>
+                    <!--MorePageListEnd-->
+                    <!--MorePageListNowStart-->
+                    <div class="pagenum_div">
+                        <font color=red><!--PageNum--></font>
+                    </div>
+                    <!--MorePageListNowEnd-->
+                    <!--NextPageStart-->
+                    <div class="pagenum_div" onclick="nextpage('<!--NextPageNum-->');">
+                        <a><!--constStr@NextPage--></a>
+                    </div>
+                </form>
+                <!--MorePageEnd-->
                 <!--IsFolderEnd-->
 
                 <!--ReadmemdStart-->
