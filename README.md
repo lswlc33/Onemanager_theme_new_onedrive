@@ -25,7 +25,7 @@
 - 后台管理界面（请保留默认主题）
 
 ## 🎶 主题展示
-
+[主题功能展示页面](https://pan.雪中明月.top/test/)  
 
 ## ✨ 如何使用主题？
 1. 复制链接: [链接](https://raw.githubusercontent.com/lswlc33/Onemanager_theme_new_onedrive/master/new_onedrive.html)
@@ -40,4 +40,5 @@
 ## 感谢
 [ArtPlayer](https://github.com/zhw2590582/ArtPlayer)  
 [OneManager-php](https://github.com/qkqpttgf/OneManager-php)  
+[monaco editor](https://microsoft.github.io/monaco-editor/)  
 等
