@@ -28,6 +28,11 @@
 [主题功能展示页面](https://pan.雪中明月.top/test/)  
 
 ## ✨ 如何使用主题？
+
+> Good News! 该主题现已经内置进 `Onemanager`!  
+> 详见 [PR#718](https://github.com/qkqpttgf/OneManager-php/pull/718)  
+> 直接在 `设置` - `平台变量` - `theme` 里面选择 `new_onedrive.html` 即可
+
 1. 复制链接: [链接](https://raw.githubusercontent.com/lswlc33/Onemanager_theme_new_onedrive/master/new_onedrive.html)
     ```
     https://raw.githubusercontent.com/lswlc33/Onemanager_theme_new_onedrive/master/new_onedrive.html
